@@ -248,6 +248,13 @@
     }
 }
 
+- (void) documentInteractionController:(UIDocumentInteractionController *)controller willBeginSendingToApplication:(NSString *)application
+{
+    if ([self.delegate respondsToSelector:@selector(openInAppActivityWillSendToApplication:)]) {
+        [self.delegate openInAppActivityWillSendToApplication:application];
+    }
+}
+
 - (void) documentInteractionController:(UIDocumentInteractionController *)controller didEndSendingToApplication:(NSString *)application
 {
     // Inform delegate
